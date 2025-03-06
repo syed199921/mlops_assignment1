@@ -16,6 +16,10 @@ class RoutesTestCase(unittest.TestCase):
         response = self.client.get('/hello')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data.decode(), 'Hello from GET request')
+    def test_hello_route(self):
+        response = self.client.get('/hello1post')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode(), 'Hello from another GET request')
 
 if __name__ == '__main__':
     unittest.main()
