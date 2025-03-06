@@ -12,10 +12,15 @@ class RoutesTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data.decode(), 'Deploying Flask App')
 
-        def test_hello_route(self):
-            response = self.client.get('/hello')
-            self.assertEqual(response.status_code, 200)
-            self.assertEqual(response.data.decode(), 'Hello from get request')
+    def test_hello_route(self):
+        response = self.client.get('/hello')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode(), 'Hello from GET request')
+    
+    def test_hello_post_route(self):
+        response = self.client.post('/hello_post')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode(), 'Hello from POST request')
 
 if __name__ == '__main__':
     unittest.main()
