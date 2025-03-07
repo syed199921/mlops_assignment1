@@ -25,7 +25,8 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'mnabeel100-dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh "echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin"
-                        sh "docker push ${IMAGE_NAME}:latest"
+                        sh "docker tag ${IMAGE_NAME}:latest ${DOCKER_USER}/${IMAGE_NAME}:latest"
+                        sh "docker push ${DOCKER_USER}/${IMAGE_NAME}:latest"
                     }
                 }
             }
@@ -34,10 +35,10 @@ pipeline {
 
     post {
         success {
-            echo "Deployment successful!"
+            echo "✅ Deployment successful!"
         }
         failure {
-            echo "Deployment failed."
+            echo "❌ Deployment failed."
         }
     }
 }
