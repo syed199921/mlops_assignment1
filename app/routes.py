@@ -1,5 +1,6 @@
 from flask import current_app as app
 
+# Creating the home route
 @app.route('/')
 def home():
     return 'Deploying Flask App'
