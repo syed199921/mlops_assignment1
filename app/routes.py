@@ -4,6 +4,7 @@ from flask import current_app as app
 def home():
     return 'Deploying Flask App'
 
+# Add a new route
 @app.route('/hello', methods=['GET'])
 def hello():
     return 'Hello from GET request'
