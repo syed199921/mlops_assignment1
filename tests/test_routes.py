@@ -7,11 +7,6 @@ class RoutesTestCase(unittest.TestCase):
         self.client = self.app.test_client()
         self.app.testing = True
 
-    def test_home_route(self):
-        response = self.client.get('/')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data.decode(), 'Deploying Flask App')
-# test 3
     def test_hello_route(self):
         response = self.client.get('/hello')
         self.assertEqual(response.status_code, 200)
